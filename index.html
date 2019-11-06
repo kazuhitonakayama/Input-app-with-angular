@@ -5,17 +5,73 @@
     <title>Angularの練習</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="myscript.js"></script>
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
     <h1>AngularJSの練習</h1>
-    <div ng-controller="MainController">
-        <p>{{users.length}} users.</p>
-        <ul>
-            <li ng-repeat="user in users" ng-controller="UserItemController">
-            {{user.name}} {{user.score}}
-            <button ng-click="increment()">+1</button>
+    <div class="interactive">
+        <h2>インタラクティブに入力内容が表示される</h2>
+        <input type="text" ng-model="name">
+        <p>{{name}}</p>
+    </div>
+    <div ng-controller="MainController" class="technique">
+
+        <div class="user">
+            <h2>ランキング＆検索的な</h2>
+            <p>{{users.length}} users.</p>
+            <input type="text" ng-model="query.name">
+            <li ng-repeat="user in users|limitTo:6|orderBy:'-score'|filter:query" ng-class-even="'even'" ng-class-odd="'odd'">
+               {{$index+1}} {{user.name}}:{{user.score}}
             </li>
-        </ul>
+        </div>
+
+
+        <form novalidate name="myName" ng-submit="addUser()" class="form">
+            <h2>フォームの実装</h2>
+            <div class="filter">
+                <div class="name">
+                    <p>Name:<input type="text" name="name" ng-model="user.name" required ng-minlength="5" ng-maxlength="8"></p>
+                    <span ng-show="myName.name.$error.required" class="error-message">required!</span>
+                    <span ng-show="myName.name.$error.minlength" class="error-message">too short</span>
+                    <span ng-show="myName.name.$error.maxlength" class="error-message">too long</span>
+                </div>
+
+                <div class="score">
+                    <p>Score:<input type="number" name="score" ng-model="user.score" required ng-minlength="5" ng-maxlength="8"></p>
+                </div>
+
+                <div class="email">
+                    <p>Email:<input type="email" name="email" ng-model="user.email"></p>
+                    <span ng-show="myName.email.$error.email" class="error-message">Invalid email</span>
+                </div>
+            </div>
+
+            <div class="checkbox">
+                    <p>18+:<input type="checkbox" ng-model="user.adult" ng-true-value="'You are already adult'" ng-false-value="'You are too child!!!'"></p>
+            </div>
+
+            <div class="radio">
+              <p>phone:
+                <input type="radio" ng-model="user.phone" value="iphone">iphone
+                <input type="radio" ng-model="user.phone" value="Android">Android
+              </p>
+            </div>
+
+            <div class="textarea">
+                <p>Memo:
+                    <textarea ng-model="user.memo" ng-maxlength="140"></textarea>
+                    {{140-user.memo.length}}
+                </p>
+            </div>
+
+            <div class="selectbox">
+                <p>color:
+                   <select ng-model="user.color" ng-options="color for color in ['red','blue','pink']" ng-init="user.color='red'"></select>
+                </p>
+            </div>
+        
+            <pre>{{user|json}}</pre>
+        </form>
     </div>
 </body>
 </html>

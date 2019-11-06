@@ -1,0 +1,55 @@
+* {
+    text-align: center;
+}
+
+.even {
+    background-color: aquamarine;
+}
+
+.odd {
+    background-color: cadetblue;
+}
+
+input {
+    border-radius: 10px;
+    border: 1px solid #333;
+    padding: 10px;
+}
+
+textarea {
+    border-radius: 10px;
+    border: 1px solid #333;
+    padding: 10px;
+}
+
+.interactive ,
+.user
+ {
+    border: 1px solid #333;
+    width: 60%;
+    border-radius: 10px;
+    margin:30px auto;
+    padding: 30px;
+}
+
+.user li {
+    width: 40%;
+    margin: 10px auto;
+    border-radius: 10px;
+    text-align: left;
+    list-style: none;
+    padding: 20px;
+}
+
+.form {
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin: auto;
+    width: 60%;
+    padding: 30px;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
