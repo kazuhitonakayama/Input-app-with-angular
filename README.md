@@ -1,4 +1,4 @@
-# angular
+# angular for learing Angular
 
 Author: Kazuhito Nakayama
 
