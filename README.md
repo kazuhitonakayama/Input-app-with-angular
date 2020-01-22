@@ -1,6 +1,6 @@
 # angular for learing Angular
 
-https://kazuhitonakayama.github.io/Input-app-with-angular/
+URL:https://kazuhitonakayama.github.io/Input-app-with-angular/
 
 Author: Kazuhito Nakayama
 
